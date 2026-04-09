@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN chmod +x mvnw
-RUN ./mvnw clean package -DskipTests
+RUN ./mvnw clean package -DskipTests && \
+    cp target/*.jar app.jar
 
-CMD ["java", "-jar", "target/*.jar"]
+CMD ["java", "-jar", "app.jar"]
